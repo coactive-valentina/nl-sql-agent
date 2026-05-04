@@ -1,1 +1,121 @@
-[]
+[
+  {
+    "timestamp": "2026-04-17T21:58:07.356544+00:00",
+    "question": "how many videos are in the dataset?",
+    "sql": "SELECT COUNT(DISTINCT coactive_video_id) AS total_videos FROM coactive_table_adv;",
+    "result_count": 1,
+    "error": null
+  },
+  {
+    "timestamp": "2026-04-17T22:09:54.382385+00:00",
+    "question": "bring all the rows (keyframes) where the probability of concept \"tsc_olympics_sport\" is higher or equal to \"0.8\"",
+    "sql": "SELECT\n  coactive_image_id,\n  coactive_video_id,\n  coactive_shot_id,\n  keyframe_index,\n  keyframe_time_ms,\n  path,\n  created_dt,\n  metadata,\n  tsc_olympics_sport_prob\nFROM coactive_table_adv\nWHERE tsc_olympics_sport_prob >= 0.8;",
+    "result_count": 100,
+    "error": null
+  },
+  {
+    "timestamp": "2026-04-17T22:13:39.296672+00:00",
+    "question": "how many videos have at least 60 keyframes with probability higher or equal to 0.8 in concept tsc_olympics_sport",
+    "sql": "WITH video_keyframes AS (\n  SELECT\n    coactive_video_id,\n    COUNT(coactive_image_id) AS keyframe_count\n  FROM coactive_table_adv\n  WHERE tsc_olympics_sport_prob >= 0.8\n  GROUP BY coactive_video_id\n)\nSELECT COUNT(*) AS video_count\nFROM video_keyframes\nWHERE keyframe_count >= 60;",
+    "result_count": 1,
+    "error": null
+  },
+  {
+    "timestamp": "2026-04-20T22:40:40.869419+00:00",
+    "question": "how many videos are in the dataset?",
+    "sql": "SELECT COUNT(DISTINCT coactive_video_id) AS total_videos FROM coactive_table_adv;",
+    "result_count": 1,
+    "error": null
+  },
+  {
+    "timestamp": "2026-04-20T22:50:43.629057+00:00",
+    "question": "how many videos have at least 180 keyframes with probability higher or equal to 0.9 in concept tsc_olympics_sport",
+    "sql": "WITH video_keyframe_count AS (\n  SELECT\n    coactive_video_id,\n    COUNT(DISTINCT coactive_image_id) AS keyframe_count\n  FROM coactive_table_adv\n  WHERE tsc_olympics_sport_prob >= 0.9\n  GROUP BY coactive_video_id\n)\nSELECT COUNT(*) AS videos_with_min_keyframes\nFROM video_keyframe_count\nWHERE keyframe_count >= 180;",
+    "result_count": 1,
+    "error": null
+  },
+  {
+    "timestamp": "2026-04-20T23:46:59.802131+00:00",
+    "question": "how many distinct videos are in the dataset?",
+    "sql": "SELECT COUNT(DISTINCT coactive_video_id) AS total_videos FROM coactive_table_adv;",
+    "result_count": 1,
+    "error": null
+  },
+  {
+    "timestamp": "2026-04-20T23:58:43.971725+00:00",
+    "question": "how many distinct videos are in the dataset?\n",
+    "sql": "SELECT COUNT(DISTINCT coactive_video_id) AS total_videos FROM coactive_table_adv;",
+    "result_count": 1,
+    "error": null
+  },
+  {
+    "timestamp": "2026-04-21T00:07:33.644801+00:00",
+    "question": "how many videos have at least 180 keyframes with probability higher or equal to 0.9 in concept tsc_olympics_sport",
+    "sql": "WITH video_counts AS (\n  SELECT\n    coactive_video_id,\n    COUNT(DISTINCT coactive_image_id) AS keyframe_count\n  FROM coactive_table_adv\n  WHERE tsc_olympics_sport_prob >= 0.9\n  GROUP BY coactive_video_id\n)\nSELECT COUNT(coactive_video_id) AS num_videos\nFROM video_counts\nWHERE keyframe_count >= 180;",
+    "result_count": 1,
+    "error": null
+  },
+  {
+    "timestamp": "2026-04-21T00:13:07.261817+00:00",
+    "question": "how many videos have at least 180 keyframes with probability higher or equal to 0.9 in concept tsc_olympics_sport",
+    "sql": null,
+    "result_count": 0,
+    "error": "Query 7fdce741-c959-46f3-9cd8-ec4b31904e13 timed out after 300 seconds."
+  },
+  {
+    "timestamp": "2026-04-21T00:36:02.183953+00:00",
+    "question": "how many videos have at least 180 keyframes with probability higher or equal to 0.9 in concept tsc_olympics_sport",
+    "sql": "WITH video_keyframe_count AS (\n  SELECT\n    coactive_video_id,\n    COUNT(DISTINCT coactive_image_id) AS keyframe_count\n  FROM coactive_table_adv\n  WHERE tsc_olympics_sport_prob >= 0.9\n  GROUP BY coactive_video_id\n)\nSELECT COUNT(*) AS video_count\nFROM video_keyframe_count\nWHERE keyframe_count >= 180;",
+    "result_count": 1,
+    "error": null
+  },
+  {
+    "timestamp": "2026-04-21T00:43:18.557006+00:00",
+    "question": "how many videos have at least 180 keyframes with probability higher or equal to 0.9 in concept tsc_olympics_sport",
+    "sql": "WITH video_keyframe_count AS (\n  SELECT\n    coactive_video_id,\n    COUNT(DISTINCT coactive_image_id) AS keyframe_count\n  FROM coactive_table_adv\n  WHERE tsc_olympics_sport_prob >= 0.9\n  GROUP BY coactive_video_id\n)\nSELECT COUNT(*) AS num_videos\nFROM video_keyframe_count\nWHERE keyframe_count >= 180;",
+    "result_count": 1,
+    "error": null
+  },
+  {
+    "timestamp": "2026-04-21T16:03:19.040191+00:00",
+    "question": "how many videos are in the dataset?",
+    "sql": "SELECT COUNT(DISTINCT coactive_video_id) AS total_videos FROM coactive_table_adv;",
+    "result_count": 1,
+    "error": null
+  },
+  {
+    "timestamp": "2026-04-21T16:43:06.219674+00:00",
+    "question": "how many videos have at least 180 keyframes with probability higher or equal to 0.9 in concept tsc_olympics_sport",
+    "sql": "WITH video_keyframe_counts AS (\n  SELECT\n    coactive_video_id,\n    COUNT(DISTINCT coactive_image_id) AS keyframe_count\n  FROM coactive_table_adv\n  WHERE tsc_olympics_sport_prob >= 0.9\n  GROUP BY coactive_video_id\n)\nSELECT COUNT(*) AS video_count\nFROM video_keyframe_counts\nWHERE keyframe_count >= 180;",
+    "result_count": 1,
+    "error": null
+  },
+  {
+    "timestamp": "2026-04-21T17:12:10.546582+00:00",
+    "question": "how many distinct videos are in the dataset?",
+    "sql": "SELECT COUNT(DISTINCT coactive_video_id) AS total_videos\nFROM coactive_table_adv;",
+    "result_count": 1,
+    "error": null
+  },
+  {
+    "timestamp": "2026-04-23T15:43:02.089933+00:00",
+    "question": "how many distinct videos are in the dataset?",
+    "sql": "SELECT COUNT(DISTINCT coactive_video_id) AS total_videos\nFROM coactive_table_adv;",
+    "result_count": 1,
+    "error": null
+  },
+  {
+    "timestamp": "2026-04-23T15:44:12.025726+00:00",
+    "question": "how many videos have at least 180 keyframes with probability higher or equal to 0.9 in concept tsc_olympics_sport",
+    "sql": "WITH video_keyframe_counts AS (\n  SELECT\n    coactive_video_id,\n    COUNT(DISTINCT coactive_image_id) AS keyframe_count\n  FROM coactive_table_adv\n  WHERE tsc_olympics_sport_prob >= 0.9\n  GROUP BY coactive_video_id\n)\nSELECT COUNT(*) AS num_videos\nFROM video_keyframe_counts\nWHERE keyframe_count >= 180;",
+    "result_count": 1,
+    "error": null
+  },
+  {
+    "timestamp": "2026-04-23T16:01:25.606220+00:00",
+    "question": "how many rows videos are in the dataset?",
+    "sql": "SELECT COUNT(DISTINCT coactive_video_id) AS total_videos\nFROM coactive_table_adv;",
+    "result_count": 1,
+    "error": null
+  }
+]
